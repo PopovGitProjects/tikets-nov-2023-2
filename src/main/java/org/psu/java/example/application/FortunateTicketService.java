@@ -10,6 +10,7 @@ public interface FortunateTicketService {
     static FortunateTicketService getInstance() {
         return new FortunateTicketImpl();
     }
+
     static FortunateTicketService getStreamInstance() {
         return new FortunateTicketStreamImpl();
     }
@@ -23,7 +24,7 @@ public interface FortunateTicketService {
             }
         }
         return result;
-    };
+    }
 }
 
 class FortunateTicketImpl implements FortunateTicketService {
@@ -36,6 +37,5 @@ class FortunateTicketStreamImpl implements FortunateTicketService {
         Stream<Ticket> ticketStream =
                 StreamSupport.stream(iterable.spliterator(), false);
         return (int) ticketStream.filter(Ticket::isFortunate).count();
-
     }
 }

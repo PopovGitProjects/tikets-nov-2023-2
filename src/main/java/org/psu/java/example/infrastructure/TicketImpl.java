@@ -13,6 +13,11 @@ import org.psu.java.example.utils.NumberUtils;
 public class TicketImpl implements Ticket {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    int length;
-    long number;
+    TicketImpl(int length,
+               long number) {
+        if (number < 0){
+            throw  new IllegalArgumentException(String.format("$d < 0", length));
+        }
+    }
+
 }
